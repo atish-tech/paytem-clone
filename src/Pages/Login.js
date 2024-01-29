@@ -6,7 +6,7 @@ import { Button } from "../Component/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { loginRoute, registerRoute } from "../ApiRoutes/routes";
+import { loginRoute } from "../ApiRoutes/routes";
 import { Spinner } from "@chakra-ui/react";
 import { LogoImage } from "../Component/LogoImage";
 import zod from "zod";
