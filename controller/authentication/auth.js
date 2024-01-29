@@ -65,13 +65,9 @@ const usersData = async (req, res) => {
       userName: { $regex: filter, $options: "i" },
     });
 
-    return req.status(200).json({
-      users: users.map((data) => ({
-        userName: data.userName,
-        balence: data.balence,
-      })),
-    });
-  } catch (error) {
+    return res.status(200).json(users); 
+  } 
+  catch (error) {
     return res.status(400).json({ message: "data not found" });
   }
 };

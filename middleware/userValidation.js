@@ -5,7 +5,7 @@ const userValidationMiddleware = async (request, response, next) => {
   try {
     const jwtToken = request.headers.authorization.split(" ")[1];
 
-    const user = await Users.findById(await verifyToken(jwtToken).id).select(
+    const user = await Users.findById((await verifyToken(jwtToken)).id).select(
       "-password"
     );
 
