@@ -4,7 +4,7 @@ const { default: mongoose } = require("mongoose");
 const checkBalence = async (request, response) => {
   try {
     const tempUser = await Balance.findOne({ userName: request.user._id });
-    console.log(tempUser);
+    // console.log(tempUser);
     if (!tempUser) {
       const tempBalence = await Balance.create(
         { userName: request.user._id },
@@ -52,9 +52,14 @@ const transferMoney = async (request, response) => {
     const currentUser = await Balance.findOne({
       userName: request.user._id,
     }).session(session);
+
     const toUser = await Balance.findOne({ userName: to }).session(session);
 
-    if (!currentUser || !toUser) {
+    if(!toUser) {
+      await Balance.create({userName : to})
+    }
+
+    if (!currentUser) {
       await session.abortTransaction();
       return response.status(400).json({ message: "User Not Found" });
     } else if (currentUser.balance < amount) {
