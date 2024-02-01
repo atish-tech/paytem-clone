@@ -4,8 +4,11 @@ import { Login } from './Pages/Login';
 import { Register } from './Pages/Register';
 import { Dashboard } from './Pages/Dashboard';
 import { SendMoney } from './Pages/SendMoney';
+import { useEffect } from 'react';
 
 function App() {
+
+
   return (
     <>
       <BrowserRouter>

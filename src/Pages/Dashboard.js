@@ -4,13 +4,21 @@ import { Balance } from "../Component/Balance";
 import { Users } from "../Component/Users";
 import { balanceRoute, getUserDataRoute } from "../ApiRoutes/routes";
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 export const Dashboard = () => {
   const [balence, setBalence] = useState(0);
   const [users, setUsers] = useState(null);
   const [search, setSearch] = useState("");
+  const navigateTo = useNavigate();
 
   useEffect(() => {
+    console.log(localStorage.getItem("token"));
+    if(!localStorage.getItem("token"))
+    navigateTo("login");
+  } , []);
+  useEffect(() => {
+
     const fetchBalence = async () => {
       try {
         const token = await JSON.parse(localStorage.getItem("token"));
