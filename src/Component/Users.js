@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 
-export const Users = ({ users }) => {
+export const Users = ({ users , setSearch , searchValue }) => {
   return (
     <>
       <div className="font-bold mt-6 text-lg ">Users</div>
@@ -9,10 +9,12 @@ export const Users = ({ users }) => {
         <input
           type="text"
           placeholder="Search users..."
-          className="w-full px-2 py-1 border rounded border-slate-200"
+          className="w-full px-2 py-1 border rounded text-black border-slate-200"
+          onChange={e => setSearch(e.target.value)}
+          value={searchValue}
         ></input>
       </div>
-      <div className="overflow-scroll max-h-[65vh] overflow-x-hidden">
+      <div className=" max-h-[65vh]  overflow-auto scroll-m-2">
         {users != null &&
           users.map((data) => {
             return (

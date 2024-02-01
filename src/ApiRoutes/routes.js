@@ -1,4 +1,6 @@
-export const host = "http://localhost:8000"
+// export const host = "http://localhost:8000"
+export const host = "https://paytem-clone.vercel.app"
+
 
 export const registerRoute = `${host}/auth/register`
 export const loginRoute = `${host}/auth/login`

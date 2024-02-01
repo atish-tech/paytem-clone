@@ -60,10 +60,10 @@ export const Login = () => {
         description: "Aou are now transfer money to any anyone",
         status: "success",
       });
+      await localStorage.setItem("token", JSON.stringify(response.data.token));
+      await localStorage.setItem("userName" , JSON.stringify(userData.userName));
       setStartRegisterProcess(false);
       navigateTo("/");
-      localStorage.setItem("token", JSON.stringify(response.data.token));
-      localStorage.setItem("userName" , JSON.stringify(userData.userName));
     } catch (error) {
       setStartRegisterProcess(false);
       // console.log(error);
