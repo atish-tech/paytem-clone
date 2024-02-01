@@ -62,7 +62,7 @@ const usersData = async (req, res) => {
     const filter = req.query.filter || "";
 
     const users = await Users.find({
-      userName: { $regex: filter, $options: "i" },
+      userName: { $regex: filter, $options: "i" , $ne : req.user.userName},
     });
 
     return res.status(200).json(users); 

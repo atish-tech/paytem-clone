@@ -8,8 +8,6 @@ const balanceSchema = mongoose.Schema({
     } ,
     balance : {
         type : Number ,
-        require : true,
-        default : 10000 * Math.random() + 10000
     } ,
 } , {dateStamp : true});
 
