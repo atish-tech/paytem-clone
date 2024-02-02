@@ -94,14 +94,14 @@ export const Login = () => {
             value={userData.userName}
             name="userName"
             type="email"
-            label="Email"
-            placeholder="Enter your email"
+            label="User Name"
+            placeholder="Enter your User Name"
           />
           <InputBox
             onChange={handelInputChange}
             value={userData.password}
             name="password"
-            type=""
+            type="password"
             label="Password"
             placeholder="Enter your password"
           />

@@ -14,7 +14,7 @@ export const Users = ({ users , setSearch , searchValue }) => {
           value={searchValue}
         ></input>
       </div>
-      <div className=" max-h-[65vh]  overflow-auto scroll-m-2">
+      <div className=" max-h-[65vh]  overflow-auto sm:p-5">
         {users != null &&
           users.map((data) => {
             return (

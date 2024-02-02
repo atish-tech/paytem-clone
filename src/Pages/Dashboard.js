@@ -5,36 +5,36 @@ import { Users } from "../Component/Users";
 import { balanceRoute, getUserDataRoute } from "../ApiRoutes/routes";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
+import { useDebouncing } from "../Hoock/useDebouncing";
 
 export const Dashboard = () => {
   const [balence, setBalence] = useState(0);
   const [users, setUsers] = useState(null);
   const [search, setSearch] = useState("");
   const navigateTo = useNavigate();
+  const searchValueDebounce = useDebouncing(search);
 
+  // check user is login or not
   useEffect(() => {
-    console.log(localStorage.getItem("token"));
+    // console.log(localStorage.getItem("token"));
     if(!localStorage.getItem("token"))
     navigateTo("login");
   } , []);
+
+
+  // Fetch balence 
   useEffect(() => {
 
     const fetchBalence = async () => {
       try {
         const token = await JSON.parse(localStorage.getItem("token"));
+
         const balenceResponse = await axios.get(balanceRoute, {
           headers: {
             authorization: `Bearer ${token}`,
           },
         });
-        console.log(balenceResponse);
 
-        // const allUserData = await axios.get(
-        //   `${getUserDataRoute}/?filter=${search}`,
-        //   { headers: { authorization: `Bearer ${token}` } }
-        // );
-
-        // setUsers(allUserData.data);
         setBalence(balenceResponse.data.balence);
       } catch (error) {
         console.log(error);
@@ -44,6 +44,7 @@ export const Dashboard = () => {
     fetchBalence();
   }, []);
 
+  // Fetch all user or searched user
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -60,7 +61,7 @@ export const Dashboard = () => {
     };
 
     fetchUserData();
-  }, [search]);
+  }, [searchValueDebounce]);
 
   return (
     <div className="bg-zinc-800 text-white w-screen h-screen">
