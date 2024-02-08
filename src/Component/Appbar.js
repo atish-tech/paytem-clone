@@ -22,6 +22,7 @@ export const Appbar = () => {
   }, []);
   const navigateTo = useNavigate()
 
+  // Logout
   const logoutHandler = () => {
     navigateTo("/login")
     localStorage.removeItem("token")

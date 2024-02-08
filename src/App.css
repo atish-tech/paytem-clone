@@ -13,6 +13,18 @@
   }
 }
 
+.user-scrollbar::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+.user-scrollbar::-webkit-scrollbar-track {
+  background: rgb(23, 23, 22);        /* color of the tracking area */
+}
+
+.user-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(51, 51, 55);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

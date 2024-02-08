@@ -16,11 +16,9 @@ export const Dashboard = () => {
 
   // check user is login or not
   useEffect(() => {
-    // console.log(localStorage.getItem("token"));
     if(!localStorage.getItem("token"))
-    navigateTo("login");
+    navigateTo("/login");
   } , []);
-
 
   // Fetch balence 
   useEffect(() => {

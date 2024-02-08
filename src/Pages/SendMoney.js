@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { Spinner } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-import SuccessTran from "../Assect/transsection-secess.png";
+import SuccessTran from "../Assect/sucess-animation.gif";
 import { LogoImage } from "../Component/LogoImage";
 export const SendMoney = () => {
   const [searchParams] = useSearchParams();
@@ -53,7 +53,7 @@ export const SendMoney = () => {
       setTimeout(() => {
         setSucessTransation(false);
         navigateTo("/");
-      }, 2000);
+      }, 5000);
     } catch (error) {
       console.log(error);
       handleTost({ title: error.response.data.message, status: "error" });
